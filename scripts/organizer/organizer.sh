@@ -3,8 +3,9 @@
 
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-MOD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
+ROOT_DIR="$(cd "$(dirname "$SCRIPT_PATH")/../.." && pwd)"
+MOD_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 
 # Se não encontrar as bibs, usa fallback de terminal limpo para evitar crachar logo de cara
 if [[ -f "${ROOT_DIR}/lib/log.sh" && -f "${ROOT_DIR}/lib/ui.sh" ]]; then
@@ -32,6 +33,7 @@ FLATTEN=false
 PRESERVE=false
 INTERACTIVE=false
 ADVANCED_GUI=false
+WAIT_AT_END=false
 
 TARGET_DIR=""
 
@@ -63,6 +65,7 @@ while [[ $# -gt 0 ]]; do
         -i) CLI_IGNORES+=("$2"); shift 2 ;;
         --advanced-gui) ADVANCED_GUI=true; shift ;;
         --interactive) INTERACTIVE=true; shift ;;
+        --wait) WAIT_AT_END=true; shift ;;
         -*) echo "Opção inválida: $1"; print_usage ;;
         *) 
             if [[ -z "$TARGET_DIR" ]]; then
@@ -371,4 +374,10 @@ fi
 
 if [[ "$ADVANCED_GUI" == true && "$DRY_RUN" == true ]]; then
     kdialog --title "Organizador de Pastas" --msgbox "Verifique o console para ver a simulação.\nDry-run concluído em:\n$TARGET_DIR"
+fi
+
+if [[ "$WAIT_AT_END" == true ]]; then
+    echo -e "\n${BOLD}${CYAN}───────────────────────────────────────────────────${RESET}"
+    echo -n -e "${YELLOW}❯${RESET} Pressione [ENTER] para fechar esta janela..."
+    read -r
 fi
