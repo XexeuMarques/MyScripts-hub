@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory;
+Actions=org_padrao;org_recursivo_flatten;org_recursivo_preserve;org_avancado;
+X-KDE-Submenu=📦 Organizador de Pastas
+Icon=folder-activities
+
+[Desktop Action org_padrao]
+Name=1. Organizar Aqui (Padrão)
+Icon=folder-open
+Exec=konsole -e _EXECUTABLE_ "%f"
+
+[Desktop Action org_recursivo_flatten]
+Name=2. Organizar Tudo (Nível 0 / Flatten)
+Icon=folder-sync
+Exec=konsole -e _EXECUTABLE_ -r --flatten "%f"
+
+[Desktop Action org_recursivo_preserve]
+Name=3. Organizar Tudo (Manter Árvore)
+Icon=folder-tree
+Exec=konsole -e _EXECUTABLE_ -r --preserve-tree "%f"
+
+[Desktop Action org_avancado]
+Name=⚙️ Avançado (Opções com KDialog)...
+Icon=configure
+Exec=_EXECUTABLE_ --advanced-gui "%f"
