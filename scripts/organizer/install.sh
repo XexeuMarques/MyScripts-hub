@@ -38,6 +38,7 @@ fi
 log_info "Gerando Service Menu..."
 # Lê o template e substitui a variável _EXECUTABLE_
 sed "s|_EXECUTABLE_|${BIN_DIR}/organizer|g" "${MOD_DIR}/service-menu.desktop" > "${KIO_DIR}/organizer-service-menu.desktop"
+chmod +x "${KIO_DIR}/organizer-service-menu.desktop"
 
 # Para dar update no cache do KDE ServiceMenus, mas geralmente é automático no Plasma 6
 # kbuildsycoca6 &>/dev/null || true

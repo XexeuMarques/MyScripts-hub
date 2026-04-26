@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Service
+MimeType=application/pdf;application/epub+zip;application/x-mobipocket-ebook;
+Actions=ConvertEpub;ConvertPdf;ConvertMobi;
+X-KDE-Submenu=Converter Ebook
+
+[Desktop Action ConvertEpub]
+Name=Converter para EPUB
+Icon=application-epub+zip
+Exec=konsole --hold -e _EXECUTABLE_ --mode ebook --target epub "%f"
+
+[Desktop Action ConvertPdf]
+Name=Converter para PDF
+Icon=application-pdf
+Exec=konsole --hold -e _EXECUTABLE_ --mode ebook --target pdf "%f"
+
+[Desktop Action ConvertMobi]
+Name=Converter para MOBI
+Icon=application-x-mobipocket-ebook
+Exec=konsole --hold -e _EXECUTABLE_ --mode ebook --target mobi "%f"

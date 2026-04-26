@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Service
+MimeType=image/webp;image/jpeg;image/png;image/gif;
+Actions=ConvertToPng;ConvertToJpg;ConvertToWebp;
+X-KDE-Submenu=Converter Imagem
+
+[Desktop Action ConvertToPng]
+Name=Converter para PNG
+Icon=image-png
+Exec=konsole --hold -e _EXECUTABLE_ --mode image-format --target png "%f"
+
+[Desktop Action ConvertToJpg]
+Name=Converter para JPG
+Icon=image-jpeg
+Exec=konsole --hold -e _EXECUTABLE_ --mode image-format --target jpg "%f"
+
+[Desktop Action ConvertToWebp]
+Name=Converter para WEBP
+Icon=image-webp
+Exec=konsole --hold -e _EXECUTABLE_ --mode image-format --target webp "%f"

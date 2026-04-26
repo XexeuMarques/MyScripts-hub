@@ -1,0 +1,25 @@
+[Desktop Entry]
+Type=Service
+MimeType=video/*;
+Actions=ExtractMp3;ExtractWav;ConvertToMp4;ConvertToMkv;
+X-KDE-Submenu=Converter Vídeo/Extrair Áudio
+
+[Desktop Action ExtractMp3]
+Name=Extrair como MP3
+Icon=audio-mp3
+Exec=konsole --hold -e _EXECUTABLE_ --mode video-to-audio --target mp3 "%f"
+
+[Desktop Action ExtractWav]
+Name=Extrair como WAV
+Icon=audio-x-wav
+Exec=konsole --hold -e _EXECUTABLE_ --mode video-to-audio --target wav "%f"
+
+[Desktop Action ConvertToMp4]
+Name=Converter para MP4
+Icon=video-mp4
+Exec=konsole --hold -e _EXECUTABLE_ --mode video-format --target mp4 "%f"
+
+[Desktop Action ConvertToMkv]
+Name=Converter para MKV
+Icon=video-x-matroska
+Exec=konsole --hold -e _EXECUTABLE_ --mode video-format --target mkv "%f"
